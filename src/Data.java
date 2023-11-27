@@ -1,9 +1,14 @@
 public class Data {
 String link;
 String title;
-public Data(){
+String tag;
+String date;
+
+
+    public Data(){
 
 }
+
     public String getLink() {
         return link;
     }
@@ -20,15 +25,34 @@ public Data(){
         this.title = title;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Data{" +
                 "link='" + link + '\'' +
                 ", title='" + title + '\'' +
+                ", tag='" + tag + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
+
     public void display(){
-        System.out.println("Link:"+ link+" Title:"+ title);
+        System.out.println("Link:"+ link+"     Title:"+ title+ "         Tag: "+tag+ "      Datetime:"+date);
     }
 
 }
