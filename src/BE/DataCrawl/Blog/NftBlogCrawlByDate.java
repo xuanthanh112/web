@@ -5,6 +5,7 @@ import BE.Common.JsonWriter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -31,7 +32,9 @@ public class NftBlogCrawlByDate {
                     .get();
 
             List<Article> articlesList = WebPageScraper.scrapeArticles(doc);
-            String filename = "articles"+year+month+".json";
+            String directoryPath = "F:\\Code\\java finalll\\intelli\\code intell\\web\\src\\BE\\data";// đổi đường dẫn này thành đường dẫn tuyệt đối của thư mục cần lưu
+            String filename = directoryPath + File.separator + "articles"+year+month+".json";
+
             JsonWriter.writeToJson(articlesList, filename);
 
             // In ra danh sách bài viết

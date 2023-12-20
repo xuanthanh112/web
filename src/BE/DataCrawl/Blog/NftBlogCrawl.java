@@ -10,7 +10,7 @@ import BE.Common.Article;
 public class NftBlogCrawl {
 
     public static void main(String[] args) {
-        int numpage = 5;
+        int numpage = 2;
         for (int page = 1; page <= numpage; page++) {
             String url = "https://www.nftically.com/blog/page/" + page + "/";
             Document doc;
@@ -24,8 +24,7 @@ public class NftBlogCrawl {
 
                 List<Article> articlesList = WebPageScraper.scrapeArticles(doc);
 
-                String directoryPath = "F:\\Code\\java finalll\\intelli\\code intell\\web\\src\\BE\\data";
-                // đổi đường dẫn này thành đường dẫn tuyệt đối của thư mục cần lưu
+                String directoryPath = "F:\\Code\\java finalll\\intelli\\code intell\\web\\src\\BE\\data";// đổi đường dẫn này thành đường dẫn tuyệt đối của thư mục cần lưu
                 String fileName = directoryPath + File.separator + "articles.json";
                 JsonWriter.writeToJson(articlesList, fileName);
 

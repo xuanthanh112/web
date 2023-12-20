@@ -34,4 +34,14 @@ public class Article {
     public String getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return
+                "tag='" + tag + '\'' +
+                ", link='" + link + '\'' +
+                ", title='" + title + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
