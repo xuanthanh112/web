@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NftBlogCrawlByDate {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -20,8 +21,12 @@ public class NftBlogCrawlByDate {
         System.out.print("Nhập tháng: ");
         String month = scanner.nextLine();
 
-        String url = "https://www.nftically.com/blog/" + year + "/" + month + "/";
+        // Gọi hàm crawl và in kết quả vào file
+        crawlAndSave(year, month);
+    }
 
+    public static void crawlAndSave(String year, String month) {
+        String url = "https://www.nftically.com/blog/" + year + "/" + month + "/";
         Document doc;
 
         try {
@@ -32,12 +37,15 @@ public class NftBlogCrawlByDate {
                     .get();
 
             List<Article> articlesList = WebPageScraper.scrapeArticles(doc);
-            String directoryPath = "F:\\Code\\java finalll\\intelli\\code intell\\web\\src\\BE\\data";// đổi đường dẫn này thành đường dẫn tuyệt đối của thư mục cần lưu
-            String filename = directoryPath + File.separator + "articles"+year+month+".json";
 
-            JsonWriter.writeToJson(articlesList, filename);
+            // Tạo đường dẫn thư mục lưu file
+            String directoryPath = "F:\\Code\\java finalll\\intelli\\code intell\\web\\src\\BE\\data"; // Thay đổi đường dẫn này thành đường dẫn tuyệt đối của thư mục cần lưu
+            String fileName = directoryPath + File.separator + "articles.json";
 
-            // In ra danh sách bài viết
+            // Ghi kết quả vào file
+            JsonWriter.writeToJson(articlesList, fileName);
+
+            // In ra danh sách bài viết, comment lại
             for (Article article : articlesList) {
                 System.out.println("Title: " + article.getTitle());
                 System.out.println("Link: " + article.getLink());
